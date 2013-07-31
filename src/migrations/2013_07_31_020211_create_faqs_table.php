@@ -15,7 +15,7 @@ class CreateFaqsTable extends Migration {
 			$table->increments('id');
 			$table->string('question');
 			$table->text('answer')->nullable();
-			$table->decimal('rank')->default(0);
+			$table->decimal('rank', 20, 6)->default(0);
 			$table->integer('views')->default(0);
 			$table->boolean('answered')->default(false);
 			$table->timestamps();
