@@ -15,7 +15,7 @@ class QuestionsController extends BaseController
 
 	public function index()
 	{
-		return $this->faqRepo->paginate(Config::get('laravel-faq::pagination.length'));
+		return $this->faqRepo->paginate(Config::get('laravel-faq::pagination.length'), array('question', 'answer'));
 	}
 
 	public function all()
@@ -47,5 +47,11 @@ class QuestionsController extends BaseController
 	public function show($id)
 	{
 		return $this->faqRepo->find($id);
+	}
+
+	public function destroy($id)
+	{
+		$faq = $this->faqRepo->find($id);
+		$faq->delete();
 	}
 }

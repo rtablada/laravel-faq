@@ -13,7 +13,13 @@ class FaqRepositoryEloquent implements FaqRepository
 
 	public function paginate($perPage = 15, $columns = array('*'))
 	{
-		return $this->faqModel->rankedPaginate($perPage, $columns)->getCollection();
+		$faq = $this->faqModel->rankedWhere('answered', 1)->paginate($perPage, $columns);
+
+		return array(
+			'questions' => $faq->getCollection()->toArray(),
+			'last_page' => $faq->getLastPage(),
+			'current_page' => $faq->getCurrentPage()
+		);
 	}
 
 	public function all($columns = array('*'))

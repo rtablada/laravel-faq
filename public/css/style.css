@@ -1,0 +1,7 @@
+.question {
+	border: 1px #aaa solid;
+}
+
+.question dd {
+	display: none;
+}

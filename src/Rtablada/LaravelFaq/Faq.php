@@ -18,6 +18,7 @@ class Faq extends Eloquent
 	public function setAnswerAttribute($value)
 	{
 		$this->updateMetricAnswer();
+		$this->attributes['answered'] = true;
 		$this->attributes['answer'] = $value;
 	}
 
