@@ -23,13 +23,14 @@ class QuestionsController extends BaseController
 
 	public function store()
 	{
-		$input = array(
-			'question' => 'How do I make this work?',
-			'answer' => 'With a stick of dynamite.'
-		);
+		$input = Input::only('question');
 
-		$faq = Faq::create($input);
+		if($input['question'] != null) {
+			$faq = Faq::create($input);
 
-		return $faq;
+			return $faq;
+		} else {
+			App::abort(500, 'Question was not saved');
+		}
 	}
 }
