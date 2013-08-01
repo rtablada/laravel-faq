@@ -15,13 +15,14 @@
 </head>
 <body>
 
+<script type="text/x-handlebars">
 	<div class="row">
 		<div class="fourteen columns">
 			<h1>Frequently Asked Questions</h1>
 
 			<dl class="faqs">
 				<div class="question">
-					<dt>What is going on here?</dt>
+					<dt>Whats is going on here?</dt>
 					<dd>It is a cool thing.</dd>
 				</div>
 				<div class="question">
@@ -35,6 +36,7 @@
 			</dl>
 		</div>
 	</div>
+</script>
 
 <?php
 	echo HTML::script($laravelFaqDir.'js/gumby.js');
@@ -42,12 +44,5 @@
 	echo HTML::script($laravelFaqDir.'js/app.js');
 ?>
 
-<script>
-	$('.question').on('click', function(vent) {
-		$this = $(this);
-		$this.find('dd').slideToggle();
-		$this.siblings('.question').find('dd').slideUp();
-	});
-</script>
 </body>
 </html>
