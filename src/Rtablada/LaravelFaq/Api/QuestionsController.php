@@ -15,15 +15,17 @@ class QuestionsController extends BaseController
 
 	public function index()
 	{
-		$paginate = $this->faqRepo->paginate(Config::get('laravel-faq::pagination.length'));
-		$faqs = $paginate->getCollection();
+		return $this->faqRepo->paginate(Config::get('laravel-faq::pagination.length'));
+	}
 
-		return $faqs;
+	public function all()
+	{
+		return $this->faqRepo->all(array('question'));
 	}
 
 	public function store()
 	{
-		$input = Input::only('question');
+		$input = Input::only('question', 'answer');
 
 		if($input['question'] != null) {
 			$faq = Faq::create($input);
@@ -32,5 +34,18 @@ class QuestionsController extends BaseController
 		} else {
 			App::abort(500, 'Question was not saved');
 		}
+	}
+
+	public function search()
+	{
+		if (Input::has('q')) {
+			return $this->faqRepo->search(Input::get('q'));
+		}
+		return App::abort(500, 'No query string');
+	}
+
+	public function show($id)
+	{
+		return $this->faqRepo->find($id);
 	}
 }
