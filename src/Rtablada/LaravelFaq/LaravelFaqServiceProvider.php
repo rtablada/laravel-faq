@@ -20,7 +20,14 @@ class LaravelFaqServiceProvider extends ServiceProvider {
 	{
 		$this->package('rtablada/laravel-faq');
 
+		$this->bootRepositories();
+
 		include __DIR__.'/../../routes.php';
+	}
+
+	public function bootRepositories()
+	{
+		$this->app->bind('Rtablada\LaravelFaq\Repositories\FaqRepository', 'Rtablada\LaravelFaq\Repositories\FaqRepositoryEloquent');
 	}
 
 	/**
