@@ -1,7 +1,7 @@
 <?php namespace Rtablada\LaravelFaq;
 
 use Rtablada\LaravelFaq\Repositories\FaqRepository;
-use View, Session, Redirect, Input;
+use View, Session, Redirect, Input, Config;
 
 class QuestionsController extends BaseController
 {
