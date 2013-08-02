@@ -1,6 +1,7 @@
 <?php namespace Rtablada\LaravelFaq\Repositories;
 
 use Rtablada\LaravelFaq\Faq;
+use Config;
 
 class FaqRepositoryEloquent implements FaqRepository
 {
