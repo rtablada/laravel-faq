@@ -1,19 +1,7 @@
+@extends(Config::get('laravel-faq::views.layout'))
 <?php $laravelFaqDir = 'packages/rtablada/laravel-faq/';?>
-<!DOCTYPE html>
 
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-
-	<title>FAQ</title>
-
-	<?php
-		echo HTML::script($laravelFaqDir.'js/modernizr.js');
-		echo HTML::style($laravelFaqDir.'css/gumby.css');
-		echo HTML::style($laravelFaqDir.'css/style.css');
-	?>
-</head>
-<body>
+@section('content')
 	<div class="row">
 		<div class="fourteen columns">
 			<h1>Frequently Asked Questions</h1>
@@ -46,11 +34,10 @@
 			<?php endif; ?>
 		</div>
 	</div>
+@stop
 
+@section('scripts')
 <?php
-	echo HTML::script($laravelFaqDir.'js/gumby.js');
 	echo HTML::script($laravelFaqDir.'js/app.js');
 ?>
-
-</body>
-</html>
+@stop
