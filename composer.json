@@ -3,7 +3,8 @@
     "description": "A FAQ Package for Laravel Sites",
     "keywords": [
         "laravel",
-        "faq"
+        "faq",
+        "lpm"
     ],
     "authors": [
         {
