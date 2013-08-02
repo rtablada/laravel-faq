@@ -22,11 +22,11 @@
 				<ul>
 					<li class="field">
 						<label for="question" class="inline two columns">Question:</label>
-						<input type="text" class="input text" id="question" name="question" placeholder="question" value="<?php echo $input->question ?>">
+						<input type="text" class="input text" id="question" name="question" placeholder="question" value="<?php echo $input['question'] ?>">
 					</li>
 					<li class="field">
 						<label for="answer" class="inline two columns">Answer:</label>
-						<textarea class="input textarea" id="answer" name="answer" placeholder="answer" rows="2"><?php echo $input->answer ?></textarea>
+						<textarea class="input textarea" id="answer" name="answer" placeholder="answer" rows="2"><?php echo $input['answer'] ?></textarea>
 					</li>
 					<li class="field">
 						<input type="submit" class="btn primary medium" value="Submit">
