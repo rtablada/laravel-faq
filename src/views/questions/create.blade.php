@@ -1,19 +1,5 @@
-<?php $laravelFaqDir = 'packages/rtablada/laravel-faq/';?>
-<!DOCTYPE html>
+@extends(Config::get('laravel-faq::views.layout'))
 
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-
-	<title>FAQ</title>
-
-	<?php
-		echo HTML::style($laravelFaqDir.'css/gumby.css');
-		echo HTML::style($laravelFaqDir.'css/style.css');
-		echo HTML::script($laravelFaqDir.'js/modernizr.js');
-	?>
-</head>
-<body>
 <div class="sixteen colgrid">
 	<div class="row">
 		<div class="sixteen columns">
@@ -37,10 +23,3 @@
 		</div>
 	</div>
 </div>
-<?php
-	echo HTML::script($laravelFaqDir.'js/gumby.js');
-	echo HTML::script($laravelFaqDir.'js/app.js');
-?>
-
-</body>
-</html>
