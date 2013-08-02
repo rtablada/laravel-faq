@@ -5,6 +5,7 @@ use Config;
 
 class Faq extends Eloquent
 {
+
 	protected $fillable = array(
 		'question',
 		'answer',
@@ -25,7 +26,17 @@ class Faq extends Eloquent
 	public function __construct(array $attributes = array())
 	{
 		$this->table = Config::get('laravel-faq::database.faq_table');
-		parent::__construct($attributes);
+
+		if ( ! isset(static::$booted[get_class($this)]))
+		{
+			static::boot();
+
+			static::$booted[get_class($this)] = true;
+		}
+
+		$this->setAttribute('rank', 0);
+
+		$this->fill($attributes);
 	}
 
 }

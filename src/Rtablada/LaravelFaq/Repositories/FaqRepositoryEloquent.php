@@ -11,9 +11,17 @@ class FaqRepositoryEloquent implements FaqRepository
 		$this->faqModel = $faqModel;
 	}
 
+	public function newInstance(array $attributes = array())
+	{
+		if (!isset($attributes['rank'])) {
+			$attributes['rank'] = 0;
+		}
+		return $this->faqModel->newInstance($attributes);
+	}
+
 	public function paginate($perPage = 15, $columns = array('*'))
 	{
-		return $faq = $this->faqModel->rankedWhere('answered', 1)->paginate($perPage, $columns);
+		return $this->faqModel->rankedWhere('answered', 1)->paginate($perPage, $columns);
 	}
 
 	public function all($columns = array('*'))
@@ -35,5 +43,10 @@ class FaqRepositoryEloquent implements FaqRepository
 	{
 		$faq = $this->faqModel->find($id);
 		return $faq->update($input);
+	}
+
+	public function destroy($id)
+	{
+		return $this->faqModel->destroy($id);
 	}
 }

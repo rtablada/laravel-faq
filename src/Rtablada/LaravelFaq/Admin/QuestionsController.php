@@ -13,6 +13,25 @@ class QuestionsController extends BaseController
 		$this->faqRepo = $faqRepo;
 	}
 
+	public function create()
+	{
+		$input = Session::getOldInput();
+
+		return View::make('laravel-faq::admin.questions.create', compact('input'));
+	}
+
+	public function store()
+	{
+		$input = Input::all();
+
+		if ($this->faqRepo->create($input)) {
+			Session::flash('success', 'Your Question Has Been Updated');
+			return Redirect::route('laravel-faq::admin.index');
+		} else {
+			return Redirect::back()->withInput();
+		}
+	}
+
 	public function edit($id)
 	{
 		$faq = $this->faqRepo->find($id);
@@ -29,5 +48,12 @@ class QuestionsController extends BaseController
 		} else {
 			return Redirect::back()->withInput();
 		}
+	}
+
+	public function destroy($id)
+	{
+		$this->faqRepo->destroy($id);
+		Session::flash('success', 'Your Question Has Been Deleted');
+		return Redirect::route('laravel-faq::admin.index');
 	}
 }

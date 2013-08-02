@@ -29,8 +29,9 @@
 			<div class="row">
 			<dl class="faqs">
 				<?php foreach ($faqs as $faq): ?>
-					<div class="question">
+					<div class="question clearfix">
 						<div class="medium primary btn pull-right"><a href="<?php echo URL::route('laravel-faq::admin.questions.edit', $faq->id) ?>">Edit</a></div>
+						<div class="medium danger btn pull-right"><a href="<?php echo URL::route('laravel-faq::admin.questions.delete', $faq->id) ?>">Delete</a></div>
 						<dt><?php echo $faq->question ?></dt>
 						<dd class="admin"><?php echo $faq->answer ?></dd>
 					</div>
@@ -44,7 +45,6 @@
 
 <?php
 	echo HTML::script($laravelFaqDir.'js/gumby.js');
-	echo HTML::script($laravelFaqDir.'js/app.js');
 ?>
 
 </body>

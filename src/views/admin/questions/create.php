@@ -19,15 +19,14 @@
 		<div class="sixteen columns">
 
 			<form action="<?php echo URL::route('laravel-faq::admin.questions.store')?>" method="POST">
-				<input name="_method" type="hidden" value="PUT">
 				<ul>
 					<li class="field">
 						<label for="question" class="inline two columns">Question:</label>
-						<input type="text" class="input text" id="question" name="question" placeholder="question" value="<?php echo $faq->question ?>">
+						<input type="text" class="input text" id="question" name="question" placeholder="question" value="<?php echo $input->question ?>">
 					</li>
 					<li class="field">
 						<label for="answer" class="inline two columns">Answer:</label>
-						<textarea class="input textarea" id="answer" name="answer" placeholder="answer" rows="2"><?php echo $faq->answer ?></textarea>
+						<textarea class="input textarea" id="answer" name="answer" placeholder="answer" rows="2"><?php echo $input->answer ?></textarea>
 					</li>
 					<li class="field">
 						<input type="submit" class="btn primary medium" value="Submit">
