@@ -27,3 +27,8 @@
 input.btn {
 	color: white;
 }
+
+.pagination ul li {
+	display: inline;
+	padding: 10px;
+}

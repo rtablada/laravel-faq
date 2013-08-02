@@ -34,16 +34,16 @@
 				<?php endforeach; ?>
 			</dl>
 
+			<div class="pages" style="float:right">
+				<?php echo $faqs->links(); ?>
+			</div>
+
 			<div class="row">
 				<p style="text-align:right;">
 					Can't find your question? <a href="<?php echo URL::route('laravel-faq::questions.create')?>">Ask it now</a>.
 				</p>
 			</div>
 			<?php endif; ?>
-
-			<div class="pages">
-				<?php echo $faqs->links(); ?>
-			</div>
 		</div>
 	</div>
 
