@@ -18,32 +18,27 @@
 		<div class="fourteen columns">
 			<h1>Frequently Asked Questions</h1>
 
-
 			<?php if($faqs->isEmpty()): ?>
 			<div class="alert light">
 				No questions have been asked, <a href="<?php echo URL::route('laravel-faq::questions.create')?>">ask one now</a>.
 			</div>
 			<?php else: ?>
-
+			<div class="row">
+				<div class="medium primary btn pull-right"><a href="<?php echo URL::route('laravel-faq::admin.questions.create')?>">New Question</a></div>
+			</div>
+			<div class="row">
 			<dl class="faqs">
 				<?php foreach ($faqs as $faq): ?>
 					<div class="question">
+						<div class="medium primary btn pull-right"><a href="<?php echo URL::route('laravel-faq::admin.questions.edit', $faq->id) ?>">Edit</a></div>
 						<dt><?php echo $faq->question ?></dt>
-						<dd><?php echo $faq->answer ?></dd>
+						<dd class="admin"><?php echo $faq->answer ?></dd>
 					</div>
 				<?php endforeach; ?>
 			</dl>
-
-			<div class="row">
-				<p style="text-align:right;">
-					Can't find your question? <a href="<?php echo URL::route('laravel-faq::questions.create')?>">Ask it now</a>.
-				</p>
 			</div>
 			<?php endif; ?>
 
-			<div class="pages">
-				<?php echo $faqs->links(); ?>
-			</div>
 		</div>
 	</div>
 

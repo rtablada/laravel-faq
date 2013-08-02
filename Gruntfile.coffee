@@ -28,8 +28,6 @@ module.exports = (grunt) ->
     # Compile coffee files to src/json
     coffee:
       glob_to_multiple:
-        options:
-          bare: true
         expand: true
         cwd: 'src/assets/coffee'
         src: ['**/*.coffee']
@@ -56,6 +54,7 @@ module.exports = (grunt) ->
         src: [
           'src/assets/vendor/handlebars/handlebars-1.0.0-rc.4.js'
           'src/assets/vendor/ember/ember-1.0.0-rc.6.1.js'
+          'src/assets/vendor/ember/ember-data.js'
         ]
         dest: 'public/js/ember.js'
 
@@ -77,7 +76,7 @@ module.exports = (grunt) ->
         tasks: ["clean", "compass", "concat"]
       src:
         files: 'src/assets/vendor/**/*.js'
-        tasks: ["concat", "livereload"]
+        tasks: ["concat"]
         options:
           interrupt: true
 

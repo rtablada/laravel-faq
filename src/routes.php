@@ -1,7 +1,10 @@
 <?php
 
+
 Route::group(Config::get('laravel-faq::routes.group_rules'), function()
 {
+	$questions = 'laravel-faq::questions.';
+
 	Route::group(array('prefix' => 'api'), function()
 	{
 		Route::group(array('prefix' => 'questions'), function()
@@ -18,8 +21,20 @@ Route::group(Config::get('laravel-faq::routes.group_rules'), function()
 		});
 	});
 
-	Route::get('/', function()
+	Route::get('/', array('uses' => 'Rtablada\LaravelFaq\QuestionsController@index', 'as' => $questions.'index'));
+	Route::get('questions/new', array('uses' => 'Rtablada\LaravelFaq\QuestionsController@create', 'as' => $questions.'create'));
+
+	Route::group(array('prefix' => 'admin'), function()
 	{
-		return View::make('laravel-faq::home');
+		$admin = 'laravel-faq::admin.';
+		Route::get('/', array('uses' => 'Rtablada\LaravelFaq\AdminController@index', 'as' => $admin.'index'));
+
+		Route::group(array('prefix' => 'questions'), function()
+		{
+			$admin_questions = 'laravel-faq::admin.questions.';
+			Route::get('{id}/edit', array('uses' => 'Rtablada\LaravelFaq\Admin\QuestionsController@edit', 'as' => $admin_questions.'edit'));
+			Route::put('{id}', array('uses' => 'Rtablada\LaravelFaq\Admin\QuestionsController@update', 'as' => $admin_questions.'update'));
+			Route::get('create', array('uses' => 'Rtablada\LaravelFaq\Admin\QuestionsController@create', 'as' => $admin_questions.'create'));
+		});
 	});
 });

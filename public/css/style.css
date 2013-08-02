@@ -1,7 +1,29 @@
 .question {
 	border: 1px #aaa solid;
+	padding: 10px;
+}
+
+.btn.pull-right {
+	float: right;
+	margin: 10px 0;
 }
 
 .question dd {
 	display: none;
+	font-size: 26px;
+	font-size: 1.625rem;
+	padding-top: 10px;
+}
+
+.question dd.admin {
+	display: block;
+}
+
+.question dt {
+	font-size: 30px;
+	font-size: 1.875rem;
+}
+
+input.btn {
+	color: white;
 }

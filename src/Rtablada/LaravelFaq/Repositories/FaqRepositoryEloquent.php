@@ -13,13 +13,7 @@ class FaqRepositoryEloquent implements FaqRepository
 
 	public function paginate($perPage = 15, $columns = array('*'))
 	{
-		$faq = $this->faqModel->rankedWhere('answered', 1)->paginate($perPage, $columns);
-
-		return array(
-			'questions' => $faq->getCollection()->toArray(),
-			'last_page' => $faq->getLastPage(),
-			'current_page' => $faq->getCurrentPage()
-		);
+		return $faq = $this->faqModel->rankedWhere('answered', 1)->paginate($perPage, $columns);
 	}
 
 	public function all($columns = array('*'))
@@ -35,5 +29,11 @@ class FaqRepositoryEloquent implements FaqRepository
 	public function find($id, $columns = array('*'))
 	{
 		return $this->faqModel->findOrFail($id, $columns);
+	}
+
+	public function updateWithIdAndInput($id, array $input)
+	{
+		$faq = $this->faqModel->find($id);
+		return $faq->update($input);
 	}
 }
