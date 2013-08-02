@@ -1,5 +1,6 @@
 @extends(Config::get('laravel-faq::views.layout'))
 
+@section('content')
 <div class="sixteen colgrid">
 	<div class="row">
 		<div class="sixteen columns">
@@ -23,3 +24,4 @@
 		</div>
 	</div>
 </div>
+@stop
