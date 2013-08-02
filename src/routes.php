@@ -29,15 +29,19 @@ Route::group(Config::get('laravel-faq::routes.public_rules'), function()
 Route::group(Config::get('laravel-faq::routes.admin_rules'), function()
 {
 	$admin = 'laravel-faq::admin.';
+
 	Route::get('/', array('uses' => 'Rtablada\LaravelFaq\AdminController@index', 'as' => $admin.'index'));
 
 	Route::group(array('prefix' => 'questions'), function()
 	{
 		$admin_questions = 'laravel-faq::admin.questions.';
-		Route::get('{id}/edit', array('uses' => 'Rtablada\LaravelFaq\Admin\QuestionsController@edit', 'as' => $admin_questions.'edit'));
-		Route::get('{id}/delete', array('uses' => 'Rtablada\LaravelFaq\Admin\QuestionsController@destroy', 'as' => $admin_questions.'delete'));
-		Route::put('{id}', array('uses' => 'Rtablada\LaravelFaq\Admin\QuestionsController@update', 'as' => $admin_questions.'update'));
+
 		Route::get('create', array('uses' => 'Rtablada\LaravelFaq\Admin\QuestionsController@create', 'as' => $admin_questions.'create'));
 		Route::post('/', array('uses' => 'Rtablada\LaravelFaq\Admin\QuestionsController@store', 'as' => $admin_questions.'store'));
+
+		Route::get('{id}/edit', array('uses' => 'Rtablada\LaravelFaq\Admin\QuestionsController@edit', 'as' => $admin_questions.'edit'));
+		Route::put('{id}', array('uses' => 'Rtablada\LaravelFaq\Admin\QuestionsController@update', 'as' => $admin_questions.'update'));
+
+		Route::get('{id}/delete', array('uses' => 'Rtablada\LaravelFaq\Admin\QuestionsController@destroy', 'as' => $admin_questions.'delete'));
 	});
 });
