@@ -9,6 +9,7 @@ class QuestionsController extends BaseController
 
 	public function __construct(FaqRepository $faqRepo)
 	{
+		$this->setupViews();
 		$this->faqRepo = $faqRepo;
 	}
 
@@ -35,6 +36,15 @@ class QuestionsController extends BaseController
 			return Redirect::route('laravel-faq::index');
 		} else {
 			return Redirect::back()->withInput();
+		}
+	}
+
+	protected function setupViews()
+	{
+		$paths = Config::get('laravel-faq::views.paths');
+
+		foreach ($paths as $path) {
+			View::addLocation($path);
 		}
 	}
 }
