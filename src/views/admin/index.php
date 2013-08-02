@@ -20,7 +20,7 @@
 
 			<?php if($faqs->isEmpty()): ?>
 			<div class="alert light">
-				No questions have been asked, <a href="<?php echo URL::route('laravel-faq::questions.create')?>">ask one now</a>.
+				No questions have been asked, <a href="<?php echo URL::route('laravel-faq::admin.questions.create')?>">ask one now</a>.
 			</div>
 			<?php else: ?>
 			<div class="row">
