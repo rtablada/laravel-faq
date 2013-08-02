@@ -3,15 +3,28 @@
 return array(
 	/*
 	|--------------------------------------------------------------------------
-	| Route Group
+	| Faq Route Group
 	|--------------------------------------------------------------------------
 	|
-	| This is the route group rules surrounding the framwork
+	| This is the route group rules surrounding the faq public routes
 	|
 	*/
-	'group_rules' => array(
+	'public_rules' => array(
 		'prefix' => 'faq',
 		// 'domain' => 'faq.site.com',
 	),
 
+	/*
+	|--------------------------------------------------------------------------
+	| Faq Route Group
+	|--------------------------------------------------------------------------
+	|
+	| This is the route group rules surrounding the faq public routes
+	|
+	*/
+	'admin_rules' => array(
+		'prefix' => 'faq/admin',
+		// 'before' => 'auth',
+		// 'domain' => 'faq.site.com',
+	),
 );
