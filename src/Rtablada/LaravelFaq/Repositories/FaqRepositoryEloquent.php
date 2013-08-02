@@ -19,8 +19,9 @@ class FaqRepositoryEloquent implements FaqRepository
 		return $this->faqModel->newInstance($attributes);
 	}
 
-	public function paginate($perPage = 15, $columns = array('*'))
+	public function paginate($perPage = 0, $columns = array('*'))
 	{
+		$perPage = $perPage ?: Config::get('laravel-faq::pagination.length');
 		return $this->faqModel->rankedWhere('answered', 1)->paginate($perPage, $columns);
 	}
 
