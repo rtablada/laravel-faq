@@ -39,4 +39,9 @@ class Faq extends Eloquent
 		$this->fill($attributes);
 	}
 
+	public function getConnection()
+	{
+		return static::resolveConnection('faq');
+	}
+
 }
