@@ -1,6 +1,7 @@
 <?php namespace Rtablada\LaravelFaq;
 
 use Illuminate\Support\ServiceProvider;
+use Config;
 
 class LaravelFaqServiceProvider extends ServiceProvider {
 
@@ -21,6 +22,7 @@ class LaravelFaqServiceProvider extends ServiceProvider {
 		$this->package('rtablada/laravel-faq');
 
 		$this->bootRepositories();
+		$this->setConnection();
 
 		include __DIR__.'/../../routes.php';
 	}
@@ -28,6 +30,20 @@ class LaravelFaqServiceProvider extends ServiceProvider {
 	public function bootRepositories()
 	{
 		$this->app->bind('Rtablada\LaravelFaq\Repositories\FaqRepository', 'Rtablada\LaravelFaq\Repositories\FaqRepositoryEloquent');
+	}
+
+	public function setConnection()
+	{
+		$connection = Config::get('laravel-faq::database.default');
+
+		if ($connection !== 'default') {
+			$wardrobeConfig = Config::get('laravel-faq::database.connections.'.$connection);
+		} else {
+			$connection = Config::get('database.default');
+			$wardrobeConfig = Config::get('database.connections.'.$connection);
+		}
+
+		Config::set('database.connections.wardrobe', $wardrobeConfig);
 	}
 
 	/**
